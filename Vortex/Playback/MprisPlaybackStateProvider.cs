@@ -21,7 +21,7 @@ public sealed class MprisPlaybackStateProvider : IPlaybackStateProvider
     {
         _service = service;
         _bus = bus;
-        _connection = new Connection(bus == DbusBus.System ? Address.System : Address.Session);
+        _connection = bus == DbusBus.System ? Connection.System : Connection.Session;
         _player = _connection.CreateProxy<IMprisPlayer>(_service, "/org/mpris/MediaPlayer2");
     }
 
@@ -29,10 +29,7 @@ public sealed class MprisPlaybackStateProvider : IPlaybackStateProvider
     {
         try
         {
-            if (!_connection.IsConnected)
-            {
-                await _connection.ConnectAsync(cancellationToken);
-            }
+            await _connection.ConnectAsync();
 
             var status = await _player.GetPlaybackStatusAsync();
             if (!string.Equals(status, "Playing", StringComparison.OrdinalIgnoreCase))
@@ -55,7 +52,8 @@ public sealed class MprisPlaybackStateProvider : IPlaybackStateProvider
 
     public ValueTask DisposeAsync()
     {
-        return _connection.DisposeAsync();
+        _connection.Dispose();
+        return ValueTask.CompletedTask;
     }
 
     private static string GetString(IDictionary<string, object> metadata, string key)

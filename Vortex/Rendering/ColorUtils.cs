@@ -11,14 +11,14 @@ public static class ColorUtils
         var x = c * (1 - Math.Abs((hue / 60.0 % 2) - 1));
         var m = value - c;
 
-        (double r, double g, double b) = hue switch
+        var (r, g, b) = hue switch
         {
-            < 60 => (c, x, 0),
-            < 120 => (x, c, 0),
-            < 180 => (0, c, x),
-            < 240 => (0, x, c),
-            < 300 => (x, 0, c),
-            _ => (c, 0, x)
+            < 60 => (c, x, 0.0),
+            < 120 => (x, c, 0.0),
+            < 180 => (0.0, c, x),
+            < 240 => (0.0, x, c),
+            < 300 => (x, 0.0, c),
+            _ => (c, 0.0, x)
         };
 
         return new Rgb24(
