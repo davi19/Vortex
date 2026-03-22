@@ -4,7 +4,7 @@ using Vortex;
 namespace Vortex.Playback;
 
 [DBusInterface("org.mpris.MediaPlayer2.Player")]
-interface IMprisPlayer : IDBusObject
+public interface IMprisPlayer : IDBusObject
 {
     Task<string> GetPlaybackStatusAsync();
     Task<IDictionary<string, object>> GetMetadataAsync();
