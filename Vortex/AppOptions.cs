@@ -45,7 +45,7 @@ public sealed record AppOptions(
         var width = 16;
         var height = 16;
         var fps = 30;
-        var source = PlaybackSource.Mpris;
+        var source = PlaybackSource.LibrespotLog;
         var sink = FrameSinkType.Null;
         var mprisService = "org.mpris.MediaPlayer2.librespot";
         var bus = DbusBus.Session;
@@ -56,7 +56,7 @@ public sealed record AppOptions(
         var colorOrder = ColorOrder.GRB;
         var serpentine = true;
         var originBottomLeft = true;
-        var flipX = false;
+        var flipX = true;
 
         for (var i = 0; i < args.Length; i++)
         {

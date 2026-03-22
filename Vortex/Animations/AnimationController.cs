@@ -34,6 +34,7 @@ public sealed class AnimationController
 
         _idleAnimations = new List<Func<IAnimation>>
         {
+            () => new IdleClock(width, height),
             () => new IdleEmojiBounce(width, height),
             () => new IdleCatBlink(width, height),
             () => new IdleHeartBeat(width, height),
