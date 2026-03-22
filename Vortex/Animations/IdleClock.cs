@@ -26,11 +26,11 @@ public sealed class IdleClock : IAnimation
         var hue = (now.Second * 6) % 360;
         var color = ColorUtils.FromHsv(hue, 0.8, 0.8);
 
-        DrawDigit(buffer, baseX, baseY, text[0], color);
-        DrawDigit(buffer, baseX + 4, baseY, text[1], color);
+        DrawDigit(buffer, baseX, baseY, text[2], color);
+        DrawDigit(buffer, baseX + 4, baseY, text[3], color);
         DrawColon(buffer, baseX + 7, baseY, color);
-        DrawDigit(buffer, baseX + 9, baseY, text[2], color);
-        DrawDigit(buffer, baseX + 13, baseY, text[3], color);
+        DrawDigit(buffer, baseX + 9, baseY, text[0], color);
+        DrawDigit(buffer, baseX + 13, baseY, text[1], color);
     }
 
     private static void DrawDigit(FrameBuffer buffer, int x, int y, char digit, Rgb24 color)

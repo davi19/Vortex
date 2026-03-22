@@ -23,7 +23,7 @@ public sealed class AnimationController
         _musicAnimations = new List<Func<IAnimation>>
         {
             () => new PsychedelicPlasma(width, height),
-            () => new PsychedelicTunnel(width, height),
+            () => new VortexSpiral(width, height),
             () => new FlowBars(width, height),
             () => new ColorWaves(width, height)
         };
@@ -31,6 +31,9 @@ public sealed class AnimationController
         _idleAnimations = new List<Func<IAnimation>>
         {
             () => new IdleClock(width, height),
+            () => new IdleEmojiBounce(width, height),
+            () => new IdleCatBlink(width, height),
+            () => new IdleHeartBeat(width, height),
             () => new IdleStars(width, height),
             () => new IdleBreathe(width, height)
         };
