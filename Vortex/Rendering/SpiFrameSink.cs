@@ -9,6 +9,7 @@ public sealed class SpiFrameSink : IFrameSink, IDisposable
     private readonly int _height;
     private readonly bool _serpentine;
     private readonly bool _originBottomLeft;
+    private readonly bool _flipX;
     private readonly byte _brightness;
     private readonly ColorOrder _colorOrder;
     private readonly byte[] _frameBytes;
@@ -21,6 +22,7 @@ public sealed class SpiFrameSink : IFrameSink, IDisposable
         int clockHz,
         bool serpentine,
         bool originBottomLeft,
+        bool flipX,
         byte brightness,
         ColorOrder colorOrder)
     {
@@ -28,6 +30,7 @@ public sealed class SpiFrameSink : IFrameSink, IDisposable
         _height = height;
         _serpentine = serpentine;
         _originBottomLeft = originBottomLeft;
+        _flipX = flipX;
         _brightness = brightness;
         _colorOrder = colorOrder;
 
@@ -68,12 +71,18 @@ public sealed class SpiFrameSink : IFrameSink, IDisposable
     private (int x, int y) MapPixel(int x, int y)
     {
         var mappedY = _originBottomLeft ? _height - 1 - y : y;
+        var mappedX = x;
         if (_serpentine && (mappedY % 2 == 1))
         {
-            return (_width - 1 - x, mappedY);
+            mappedX = _width - 1 - mappedX;
         }
 
-        return (x, mappedY);
+        if (_flipX)
+        {
+            mappedX = _width - 1 - mappedX;
+        }
+
+        return (mappedX, mappedY);
     }
 
     private void WriteColor(Rgb24 color, byte[] target, int offset)

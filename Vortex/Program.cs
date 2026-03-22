@@ -10,6 +10,7 @@ Console.WriteLine($"[vortex] size={options.Width}x{options.Height} fps={options.
 
 IPlaybackStateProvider stateProvider = options.Source switch
 {
+    PlaybackSource.Idle => new IdlePlaybackStateProvider(),
     PlaybackSource.Mpris => new MprisPlaybackStateProvider(options.MprisService, options.Bus),
     PlaybackSource.Demo => new DemoPlaybackStateProvider(),
     _ => new DemoPlaybackStateProvider()
@@ -25,6 +26,7 @@ IFrameSink frameSink = options.Sink switch
         options.SpiHz,
         options.Serpentine,
         options.OriginBottomLeft,
+        options.FlipX,
         options.Brightness,
         options.ColorOrder),
     FrameSinkType.Null => new NullFrameSink(),

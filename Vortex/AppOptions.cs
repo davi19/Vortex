@@ -4,6 +4,7 @@ namespace Vortex;
 
 public enum PlaybackSource
 {
+    Idle,
     Mpris,
     Demo
 }
@@ -34,7 +35,8 @@ public sealed record AppOptions(
     byte Brightness,
     ColorOrder ColorOrder,
     bool Serpentine,
-    bool OriginBottomLeft)
+    bool OriginBottomLeft,
+    bool FlipX)
 {
     public static AppOptions Parse(string[] args)
     {
@@ -51,6 +53,7 @@ public sealed record AppOptions(
         var colorOrder = ColorOrder.GRB;
         var serpentine = true;
         var originBottomLeft = true;
+        var flipX = false;
 
         for (var i = 0; i < args.Length; i++)
         {
@@ -96,6 +99,9 @@ public sealed record AppOptions(
                 case "--origin-bottom-left":
                     originBottomLeft = ParseBool(args[++i], true);
                     break;
+                case "--flip-x":
+                    flipX = ParseBool(args[++i], false);
+                    break;
             }
         }
 
@@ -112,7 +118,8 @@ public sealed record AppOptions(
             brightness,
             colorOrder,
             serpentine,
-            originBottomLeft);
+            originBottomLeft,
+            flipX);
     }
 
     private static T ParseEnum<T>(string value, T fallback) where T : struct
