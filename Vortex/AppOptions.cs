@@ -5,6 +5,7 @@ namespace Vortex;
 public enum PlaybackSource
 {
     Idle,
+    LibrespotLog,
     Mpris,
     Demo
 }
@@ -30,6 +31,7 @@ public sealed record AppOptions(
     FrameSinkType Sink,
     string MprisService,
     DbusBus Bus,
+    string LibrespotService,
     string SpiDevice,
     int SpiHz,
     byte Brightness,
@@ -47,6 +49,7 @@ public sealed record AppOptions(
         var sink = FrameSinkType.Null;
         var mprisService = "org.mpris.MediaPlayer2.librespot";
         var bus = DbusBus.Session;
+        var librespotService = "librespot.service";
         var spiDevice = "/dev/spidev0.0";
         var spiHz = 2_400_000;
         var brightness = (byte)255;
@@ -81,6 +84,9 @@ public sealed record AppOptions(
                 case "--bus":
                     bus = ParseEnum(args[++i], DbusBus.Session);
                     break;
+                case "--librespot-service":
+                    librespotService = args[++i];
+                    break;
                 case "--spi-device":
                     spiDevice = args[++i];
                     break;
@@ -113,6 +119,7 @@ public sealed record AppOptions(
             sink,
             mprisService,
             bus,
+            librespotService,
             spiDevice,
             spiHz,
             brightness,

@@ -11,6 +11,7 @@ Console.WriteLine($"[vortex] size={options.Width}x{options.Height} fps={options.
 IPlaybackStateProvider stateProvider = options.Source switch
 {
     PlaybackSource.Idle => new IdlePlaybackStateProvider(),
+    PlaybackSource.LibrespotLog => new LibrespotLogPlaybackStateProvider(options.LibrespotService),
     PlaybackSource.Mpris => new MprisPlaybackStateProvider(options.MprisService, options.Bus),
     PlaybackSource.Demo => new DemoPlaybackStateProvider(),
     _ => new DemoPlaybackStateProvider()
