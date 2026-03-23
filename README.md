@@ -1,19 +1,53 @@
-# Vortex
-Project built in a "vibe-coding" style: exploratory, creative, and iterative, focusing on experimenting with ideas and adjusting along the way.
+# 🚀 Vortex
+
+Project built in a "vibe-coding" style — exploratory, creative and iterative, focused on experimenting with real-world hardware + software integration.
 
 # What it is
-A .NET application for animation/rendering, with playback and rendering components. This run in a raspberry with 16x16 led matrix and speaker. The raspberry run the librespot for playing spotify sounds. This application read logs of librespot to change animations between idle and sounds animations. The sound animations were inspired for the windows media player of windows xp. And idle animations were inspired by any generic pixel art. Like emoji, heart and clock. The main purpose of this is only to make a generic Divoom just for fun. The real hobby here is is the electronic part like dac sound and this things.
 
-# How to run it
-Open Vortex.sln in Rider/Visual Studio.
-Select the Vortex project.
+Vortex is a real-time animation and playback system built in .NET, designed to run on a Raspberry Pi connected to a 16x16 LED matrix and speaker.
 
-Run it.
+It integrates with LibreSpot (Spotify client) by reading its logs to detect playback state and dynamically switch between animation modes.
 
-# Structure
-Vortex/Animations: animations and visual routines
-Vortex/Playback: playback control
-Vortex/Rendering: rendering pipeline
+When music is playing → reactive animations (inspired by Windows Media Player)
 
-# Contribution 
-Feel free to work in this project or fork this and make better. 
+When idle → pixel-art animations (emojis, clocks, etc.)
+
+The goal is to create a DIY Divoom-like device, combining software, embedded systems and hardware experimentation.
+
+# Key ideas
+
+Event-driven behavior based on external system logs (LibreSpot)
+
+Real-time rendering pipeline for LED matrix
+
+Separation between playback state and visual system
+
+Focus on low-resource environments (Raspberry Pi)
+
+# Architecture
+
+Animations/ → visual logic and effects
+
+Playback/ → state detection and control
+
+Rendering/ → LED matrix rendering pipeline
+
+# Why this exists
+
+This project is less about the final product and more about exploring:
+
+hardware/software integration
+
+real-time systems
+
+creative coding
+
+# How to run
+
+Open Vortex.sln in Rider or Visual Studio
+
+Run the Vortex project
+
+# 🤝 Contribution
+
+Feel free to fork, experiment and extend the idea.
