@@ -1,16 +1,16 @@
-# Vortex
+Vortex
+Project built in a "vibe-coding" style: exploratory, creative, and iterative, focusing on experimenting with ideas and adjusting along the way.
 
-Projeto feito no estilo "vibe-coding": exploratorio, criativo e iterativo, com foco em experimentar ideias e ajustar no caminho.
+What it is
+A .NET application for animation/rendering, with playback and rendering components.
 
-## O que e
-Aplicacao em .NET para animacao/renderizacao, com componentes de playback e rendering.
+How to run it
+Open Vortex.sln in Rider/Visual Studio.
+Select the Vortex project.
 
-## Como rodar
-1. Abra `Vortex.sln` no Rider/Visual Studio.
-2. Selecione o projeto `Vortex`.
-3. Execute.
+Run it.
 
-## Estrutura
-- `Vortex/Animations`: animacoes e rotinas visuais
-- `Vortex/Playback`: controle de playback
-- `Vortex/Rendering`: pipeline de renderizacao
+Structure
+Vortex/Animations: animations and visual routines
+Vortex/Playback: playback control
+Vortex/Rendering: rendering pipeline
